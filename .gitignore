@@ -40,14 +40,7 @@ data/
 *.csv
 *.parquet
 
-# DVC - Allow .dvc directory, but ignore cache/tmp and pointer files
-.dvc
-!.dvc/
-.dvc/cache
-.dvc/tmp
-*.dvc
-!data.zip.dvc
-dvc.lock
+
 
 # MLflow
 mlruns/
