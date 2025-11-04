@@ -41,6 +41,7 @@ data/
 *.parquet
 
 # DVC - Allow .dvc directory, but ignore cache/tmp and pointer files
+.dvc
 !.dvc/
 .dvc/cache
 .dvc/tmp
