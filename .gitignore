@@ -31,8 +31,8 @@ artifacts/
 *.pt
 *.onnx
 *.pb
-model/
-models/
+
+
 
 # Data (don't commit - use DVC)
 data/
