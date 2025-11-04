@@ -282,3 +282,5 @@ See LICENSE file for details
 - Dataset from Google Drive
 - VGG16 architecture by Karen Simonyan and Andrew Zisserman
 - MLflow and DVC communities
+
+- Prepared By Shubh Agarwal , Het Sevalia , Khushi Panchal , Dhwani Bhavankar 
