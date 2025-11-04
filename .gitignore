@@ -25,14 +25,14 @@ wheels/
 
 # Artifacts (don't commit - use DVC)
 artifacts/
-
+*.pth
 *.h5
 *.pkl
 *.pt
 *.onnx
 *.pb
-
-
+model/
+models/
 
 # Data (don't commit - use DVC)
 data/
