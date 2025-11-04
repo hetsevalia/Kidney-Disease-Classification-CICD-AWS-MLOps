@@ -37,12 +37,31 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y jq unzip
+      - name: Verify AWS credentials are set
+        run: |
+          if [ -z "${{ secrets.AWS_ACCESS_KEY_ID }}" ]; then
+            echo "ERROR: AWS_ACCESS_KEY_ID secret is not set"
+            exit 1
+          fi
+          if [ -z "${{ secrets.AWS_SECRET_ACCESS_KEY }}" ]; then
+            echo "ERROR: AWS_SECRET_ACCESS_KEY secret is not set"
+            exit 1
+          fi
+          echo "AWS credentials secrets are set"
+      - name: Set AWS Region
+        id: set-region
+        run: |
+          if [ -z "${{ secrets.AWS_REGION }}" ]; then
+            echo "region=eu-north-1" >> $GITHUB_OUTPUT
+          else
+            echo "region=${{ secrets.AWS_REGION }}" >> $GITHUB_OUTPUT
+          fi
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION || 'eu-north-1' }}
+          aws-region: ${{ steps.set-region.outputs.region }}
 
       - name: Login to Amazon ECR
         id: login-ecr
@@ -70,12 +89,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Set AWS Region
+        id: set-region
+        run: |
+          if [ -z "${{ secrets.AWS_REGION }}" ]; then
+            echo "region=eu-north-1" >> $GITHUB_OUTPUT
+          else
+            echo "region=${{ secrets.AWS_REGION }}" >> $GITHUB_OUTPUT
+          fi
       - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION || 'eu-north-1' }}
+          aws-region: ${{ steps.set-region.outputs.region }}
 
       - name: Login to Amazon ECR
         id: login-ecr
