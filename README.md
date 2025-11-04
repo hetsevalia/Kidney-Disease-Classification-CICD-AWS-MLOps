@@ -1,6 +1,6 @@
 # Kidney Disease Classification - MLOps Project
 
-[![Python](https://img.shields.io/badge/Python-3.8-blue.svg)](https://www.python.org/)
+[![Python](https://img.shields.io/badge/Python-3.11-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.0-green.svg)](https://pytorch.org/)
 [![MLflow](https://img.shields.io/badge/MLflow-2.2-orange.svg)](https://mlflow.org/)
 [![DVC](https://img.shields.io/badge/DVC-3.0-blueviolet.svg)](https://dvc.org/)
