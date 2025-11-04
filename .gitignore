@@ -25,13 +25,13 @@ wheels/
 
 # Artifacts (don't commit - use DVC)
 artifacts/
-*.pth
+# Note: *.pth files are tracked via Git LFS (see .gitattributes)
 *.h5
 *.pkl
 *.pt
 *.onnx
 *.pb
-model/
+# Note: model/ folder is tracked via Git LFS for model files
 models/
 
 # Data (don't commit - use DVC)
