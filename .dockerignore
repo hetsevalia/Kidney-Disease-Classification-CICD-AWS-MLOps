@@ -1,0 +1,81 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info
+dist/
+build/
+*.egg
+.pytest_cache
+.coverage
+htmlcov/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints
+*.ipynb
+
+# Documentation (optional - comment out if you want docs in image)
+Documentation/
+*.md
+!README.md
+
+# Logs
+logs/*.log
+*.log
+
+# Artifacts (optional - comment out if you want pre-trained models in image)
+artifacts/training/model.pth
+artifacts/prepare_base_model/*.pth
+artifacts/data_ingestion/kidney-ct-scan-image/
+artifacts/data_ingestion/data.zip
+
+# DVC
+.dvc/
+.dvcignore
+dvc.lock
+
+# Model files (large files)
+*.pth
+*.h5
+*.hdf5
+*.pkl
+*.pickle
+
+# Test files
+test/
+tests/
+*_test.py
+test_*.py
+
+# Misc
+.env
+.env.local
+*.tmp
+.cache/
+inputImage.jpg
+tumour.webp
+check_model.py
+verify_setup.py
+template.py
+

@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Kidney Disease Classification - Complete Documentation</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Kidney Disease Classification - Complete Documentation</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#kidney-disease-classification---complete-documentation">Kidney Disease Classification - Complete Documentation</a></li>
+<li><a href="#project-overview">Project Overview</a>
+<ul>
+<li><a href="#what-is-this-project">What is This Project?</a></li>
+<li><a href="#key-objectives">Key Objectives</a></li>
+<li><a href="#dataset-information">Dataset Information</a></li>
+</ul></li>
+<li><a href="#quick-start">Quick Start</a>
+<ul>
+<li><a href="#setup-environment">Setup Environment</a></li>
+</ul></li>
+<li><a href="#technology-stack">Technology Stack</a>
+<ul>
+<li><a href="#deep-learning-ml-framework">Deep Learning &amp; ML Framework</a></li>
+<li><a href="#data-processing">Data Processing</a></li>
+<li><a href="#mlops-tools">MLOps Tools</a></li>
+<li><a href="#web-framework">Web Framework</a></li>
+<li><a href="#development-configuration">Development &amp; Configuration</a></li>
+<li><a href="#cloud-deployment">Cloud &amp; Deployment</a></li>
+<li><a href="#visualization">Visualization</a></li>
+</ul></li>
+<li><a href="#project-architecture">Project Architecture</a>
+<ul>
+<li><a href="#directory-structure">Directory Structure</a></li>
+<li><a href="#architecture-diagram">Architecture Diagram</a></li>
+</ul></li>
+<li><a href="#pipeline-stages-explained">Pipeline Stages Explained</a>
+<ul>
+<li><a href="#stage-1-data-ingestion">Stage 1: Data Ingestion</a></li>
+<li><a href="#stage-2-prepare-base-model">Stage 2: Prepare Base Model</a></li>
+<li><a href="#stage-3-model-training">Stage 3: Model Training</a></li>
+<li><a href="#stage-4-model-evaluation">Stage 4: Model Evaluation</a></li>
+</ul></li>
+<li><a href="#technical-architecture">Technical Architecture</a>
+<ul>
+<li><a href="#system-architecture">System Architecture</a></li>
+<li><a href="#vgg16-architecture">VGG16 Architecture</a></li>
+<li><a href="#image-preprocessing">Image Preprocessing</a></li>
+</ul></li>
+<li><a href="#mlops-practices">MLOps Practices</a>
+<ul>
+<li><a href="#dvc-data-version-control">DVC (Data Version Control)</a></li>
+<li><a href="#mlflow">MLflow</a></li>
+<li><a href="#docker-containerization">Docker Containerization</a></li>
+</ul></li>
+<li><a href="#setup-and-installation">Setup and Installation</a>
+<ul>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li><a href="#step-by-step-installation">Step-by-Step Installation</a></li>
+</ul></li>
+<li><a href="#api-documentation">API Documentation</a>
+<ul>
+<li><a href="#flask-application-endpoints">Flask Application Endpoints</a></li>
+</ul></li>
+<li><a href="#deployment-guide">Deployment Guide</a>
+<ul>
+<li><a href="#docker-deployment">Docker Deployment</a></li>
+<li><a href="#aws-deployment">AWS Deployment</a></li>
+</ul></li>
+<li><a href="#troubleshooting">Troubleshooting</a>
+<ul>
+<li><a href="#common-issues-and-solutions">Common Issues and Solutions</a></li>
+</ul></li>
+<li><a href="#quick-reference">Quick Reference</a>
+<ul>
+<li><a href="#common-commands">Common Commands</a></li>
+<li><a href="#api-endpoints">API Endpoints</a></li>
+</ul></li>
+<li><a href="#best-practices">Best Practices</a>
+<ul>
+<li><a href="#code-organization">Code Organization</a></li>
+<li><a href="#data-management">Data Management</a></li>
+<li><a href="#model-development">Model Development</a></li>
+<li><a href="#deployment">Deployment</a></li>
+<li><a href="#security">Security</a></li>
+<li><a href="#performance-metrics">Performance Metrics</a></li>
+<li><a href="#references">References</a></li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="kidney-disease-classification---complete-documentation">Kidney Disease Classification - Complete Documentation</h1>
+<p><strong>Comprehensive Guide for Kidney Disease Classification MLOps Project</strong></p>
+<hr />
+<p><strong>Table of Contents</strong></p>
+<ol type="1">
+<li><a href="#project-overview">Project Overview</a></li>
+<li><a href="#quick-start">Quick Start</a></li>
+<li><a href="#technology-stack">Technology Stack</a></li>
+<li><a href="#project-architecture">Project Architecture</a></li>
+<li><a href="#pipeline-stages-explained">Pipeline Stages Explained</a></li>
+<li><a href="#technical-architecture">Technical Architecture</a></li>
+<li><a href="#mlops-practices">MLOps Practices</a></li>
+<li><a href="#setup-and-installation">Setup and Installation</a></li>
+<li><a href="#api-documentation">API Documentation</a></li>
+<li><a href="#deployment-guide">Deployment Guide</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#quick-reference">Quick Reference</a></li>
+<li><a href="#best-practices">Best Practices</a></li>
+</ol>
+<hr />
+<h1 id="project-overview">Project Overview</h1>
+<h2 id="what-is-this-project">What is This Project?</h2>
+<p>This project implements an <strong>end-to-end MLOps pipeline</strong> for classifying kidney CT scan images into two categories: - <strong>Normal</strong>: Healthy kidney tissue - <strong>Tumor</strong>: Abnormal kidney tissue with tumors</p>
+<h2 id="key-objectives">Key Objectives</h2>
+<ol type="1">
+<li><strong>Automated Data Pipeline</strong>: Automated data ingestion from Google Drive</li>
+<li><strong>Transfer Learning</strong>: Use pre-trained VGG16 model for classification</li>
+<li><strong>Model Training</strong>: Train with data augmentation and validation</li>
+<li><strong>Model Evaluation</strong>: Evaluate model performance with metrics tracking</li>
+<li><strong>Model Deployment</strong>: Deploy via Flask API with web interface</li>
+<li><strong>MLOps Integration</strong>: Use DVC for version control and MLflow for experiment tracking</li>
+</ol>
+<h2 id="dataset-information">Dataset Information</h2>
+<ul>
+<li><strong>Source</strong>: Kidney CT scan images from Google Drive</li>
+<li><strong>Classes</strong>: 2 (Normal, Tumor)</li>
+<li><strong>Images</strong>: ~465 total images (240 Normal + 225 Tumor)</li>
+<li><strong>Format</strong>: JPEG images</li>
+<li><strong>Resolution</strong>: Variable (processed to 224x224)</li>
+</ul>
+<hr />
+<h1 id="quick-start">Quick Start</h1>
+<h2 id="setup-environment">Setup Environment</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Create conda environment</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> cnncls python=3.8 <span class="at">-y</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate cnncls</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Install dependencies</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Train the model</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> main.py</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Start web application</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> app.py</span></code></pre></div>
+<p>Visit: http://localhost:8080</p>
+<hr />
+<h1 id="technology-stack">Technology Stack</h1>
+<h2 id="deep-learning-ml-framework">Deep Learning &amp; ML Framework</h2>
+<ul>
+<li><strong>PyTorch</strong> (≥2.0.0): Deep learning framework for model development</li>
+<li><strong>Torchvision</strong> (≥0.15.0): Image processing and pretrained models</li>
+</ul>
+<h2 id="data-processing">Data Processing</h2>
+<ul>
+<li><strong>Pandas</strong>: Data manipulation and analysis</li>
+<li><strong>NumPy</strong>: Numerical computations</li>
+<li><strong>PIL (Pillow)</strong>: Image processing</li>
+<li><strong>gdown</strong>: Download files from Google Drive</li>
+</ul>
+<h2 id="mlops-tools">MLOps Tools</h2>
+<ul>
+<li><strong>DVC (Data Version Control)</strong>: Version control for datasets and models</li>
+<li><strong>MLflow</strong> (2.2.2): Experiment tracking and model registry</li>
+<li><strong>Dagshub</strong>: MLflow tracking backend</li>
+</ul>
+<h2 id="web-framework">Web Framework</h2>
+<ul>
+<li><strong>Flask</strong>: Web application framework for API</li>
+<li><strong>Flask-CORS</strong>: Cross-origin resource sharing support</li>
+</ul>
+<h2 id="development-configuration">Development &amp; Configuration</h2>
+<ul>
+<li><strong>PyYAML</strong>: Configuration file management</li>
+<li><strong>python-box</strong>: Configuration management</li>
+<li><strong>Jupyter Notebook</strong>: Research and experimentation</li>
+</ul>
+<h2 id="cloud-deployment">Cloud &amp; Deployment</h2>
+<ul>
+<li><strong>Docker</strong>: Containerization for deployment</li>
+<li><strong>AWS</strong>: Cloud infrastructure (EC2, ECR)</li>
+<li><strong>GitHub Actions</strong>: CI/CD automation</li>
+</ul>
+<h2 id="visualization">Visualization</h2>
+<ul>
+<li><strong>Matplotlib</strong>: Data visualization</li>
+<li><strong>Seaborn</strong>: Statistical visualizations</li>
+</ul>
+<hr />
+<h1 id="project-architecture">Project Architecture</h1>
+<h2 id="directory-structure">Directory Structure</h2>
+<pre><code>Kidney-Disease-Classification-Deep-Learning-Project/
+│
+├── config/
+│   └── config.yaml              # Configuration for all stages
+│
+├── src/cnnClassifier/
+│   ├── components/               # Core functionality modules
+│   │   ├── data_ingestion.py
+│   │   ├── prepare_base_model.py
+│   │   ├── model_training.py
+│   │   └── model_evaluation_mlflow.py
+│   │
+│   ├── pipeline/                 # Pipeline orchestration
+│   │   ├── stage_01_data_ingestion.py
+│   │   ├── stage_02_prepare_base_model.py
+│   │   ├── stage_03_model_training.py
+│   │   ├── stage_04_model_evaluation.py
+│   │   └── prediction.py
+│   │
+│   ├── config/
+│   │   └── configuration.py     # Configuration manager
+│   │
+│   └── entity/
+│       └── config_entity.py     # Data classes for config
+│
+├── artifacts/                    # Generated files and models
+│   ├── data_ingestion/
+│   ├── prepare_base_model/
+│   └── training/
+│
+├── research/                     # Jupyter notebooks for exploration
+├── templates/                     # HTML templates for web UI
+├── main.py                       # Main training script
+├── app.py                        # Flask API application
+├── params.yaml                   # Hyperparameters
+├── dvc.yaml                      # DVC pipeline definition
+└── Dockerfile                    # Container definition</code></pre>
+<h2 id="architecture-diagram">Architecture Diagram</h2>
+<pre><code>┌─────────────────────────────────────────────────────────┐
+│                    Flask API (app.py)                   │
+│  ┌──────────┐  ┌──────────┐  ┌──────────────────┐     │
+│  │   Train  │  │ Predict  │  │  Model Status    │     │
+│  └────┬─────┘  └────┬─────┘  └──────────────────┘     │
+└───────┼─────────────┼──────────────────────────────────┘
+        │             │
+        ▼             ▼
+┌─────────────────────────────────────────────────────────┐
+│                  Training Pipeline (main.py)             │
+│                                                          │
+│  Stage 1: Data Ingestion                                │
+│         └──&gt; Download &amp; Extract                         │
+│                                                          │
+│  Stage 2: Prepare Base Model                            │
+│         └──&gt; Load VGG16 + Custom Head                   │
+│                                                          │
+│  Stage 3: Model Training                                │
+│         └──&gt; Train with Augmentation                    │
+│                                                          │
+│  Stage 4: Evaluation                                    │
+│         └──&gt; Metrics &amp; MLflow Logging                   │
+└─────────────────────────────────────────────────────────┘
+        │
+        ▼
+┌─────────────────────────────────────────────────────────┐
+│                      Artifacts                           │
+│  ┌──────────────┐  ┌─────────────┐  ┌──────────────┐  │
+│  │    Data      │  │ Base Model  │  │ Trained Model│  │
+│  └──────────────┘  └─────────────┘  └──────────────┘  │
+└─────────────────────────────────────────────────────────┘
+        │             │
+        ▼             ▼
+┌─────────────────────────────────────────────────────────┐
+│              MLOps Tools                                 │
+│  ┌──────────┐                      ┌──────────┐       │
+│  │   DVC    │  Version Control      │  MLflow  │       │
+│  │ Pipeline │  &amp; Data Tracking      │ Tracking │       │
+│  └──────────┘                      └──────────┘       │
+└─────────────────────────────────────────────────────────┘</code></pre>
+<hr />
+<h1 id="pipeline-stages-explained">Pipeline Stages Explained</h1>
+<h2 id="stage-1-data-ingestion">Stage 1: Data Ingestion</h2>
+<p><strong>File</strong>: <code>src/cnnClassifier/components/data_ingestion.py</code></p>
+<p><strong>What it does:</strong> 1. Downloads the dataset from Google Drive using the provided URL 2. Extracts the ZIP file to the local file system 3. Organizes data for training</p>
+<p><strong>Why:</strong> - Ensures data reproducibility by downloading from a stable source - Automates data preparation process - Version control with DVC tracks changes</p>
+<p><strong>How it works:</strong></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> download_file(<span class="va">self</span>):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract file ID from Google Drive URL</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use gdown to download the ZIP file</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Save to local_data_file path</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> extract_zip_file(<span class="va">self</span>):</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Unzip the downloaded file</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Extract to kidney-ct-scan-image/ directory</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Contains Normal/ and Tumor/ subdirectories</span></span></code></pre></div>
+<p><strong>Output</strong>: - <code>artifacts/data_ingestion/kidney-ct-scan-image/</code> - <code>Normal/</code> (240 images) - <code>Tumor/</code> (225 images)</p>
+<hr />
+<h2 id="stage-2-prepare-base-model">Stage 2: Prepare Base Model</h2>
+<p><strong>File</strong>: <code>src/cnnClassifier/components/prepare_base_model.py</code></p>
+<p><strong>What it does:</strong> 1. Loads pre-trained VGG16 model (ImageNet weights) 2. Removes the original classifier head (1000 ImageNet classes) 3. Adds a custom classifier for binary classification (Normal/Tumor) 4. Saves the base model and updated model</p>
+<p><strong>Why:</strong> - <strong>Transfer Learning</strong>: Leverages features learned on ImageNet - <strong>Efficiency</strong>: Pre-trained features reduce training time - <strong>Performance</strong>: ImageNet features generalize well to medical imaging</p>
+<p><strong>Architecture Details:</strong></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Original VGG16 Structure</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Features: Conv layers (conv1_1 <span class="op">-&gt;</span> pool5)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Classifier: <span class="dv">3</span> FC layers (<span class="dv">4096</span> <span class="op">-&gt;</span> <span class="dv">4096</span> <span class="op">-&gt;</span> <span class="dv">1000</span> classes)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Modified for Kidney Classification</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>Features: Same VGG16 features (frozen)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>New Classifier:</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> AdaptiveAvgPool2d (<span class="dv">7</span>x7)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> Flatten</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> Linear(<span class="dv">512</span><span class="op">*</span><span class="dv">7</span><span class="op">*</span><span class="dv">7</span> <span class="op">-&gt;</span> <span class="dv">4096</span>) <span class="op">+</span> ReLU <span class="op">+</span> Dropout(<span class="fl">0.5</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> Linear(<span class="dv">4096</span> <span class="op">-&gt;</span> <span class="dv">4096</span>) <span class="op">+</span> ReLU <span class="op">+</span> Dropout(<span class="fl">0.5</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">-</span> Linear(<span class="dv">4096</span> <span class="op">-&gt;</span> <span class="dv">2</span> classes)</span></code></pre></div>
+<p><strong>Outputs</strong>: - <code>base_model.pth</code>: VGG16 features only - <code>base_model_updated.pth</code>: Features + custom classifier</p>
+<hr />
+<h2 id="stage-3-model-training">Stage 3: Model Training</h2>
+<p><strong>File</strong>: <code>src/cnnClassifier/components/model_training.py</code></p>
+<p><strong>What it does:</strong> 1. Loads the prepared base model 2. Splits data into train/validation (80/20) 3. Applies data augmentation to training set 4. Trains the model using transfer learning 5. Saves the trained model</p>
+<p><strong>Why Data Augmentation?</strong> - Increases dataset diversity without collecting more data - Prevents overfitting - Improves model generalization</p>
+<p><strong>Augmentation Techniques</strong>:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>RandomRotation(<span class="dv">40</span> degrees)      <span class="co"># Rotation invariance</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>RandomHorizontalFlip()         <span class="co"># Reflection invariance</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>RandomAffine(translate<span class="op">=</span><span class="fl">0.2</span>)   <span class="co"># Position invariance</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>RandomAffine(scale<span class="op">=</span><span class="fl">0.8</span><span class="op">-</span><span class="fl">1.2</span>)   <span class="co"># Size invariance</span></span></code></pre></div>
+<p><strong>Training Process</strong>: 1. <strong>Forward Pass</strong>: Input images → VGG16 features → Classifier → Predictions 2. <strong>Loss Calculation</strong>: Cross-entropy loss 3. <strong>Backward Pass</strong>: Gradient computation and optimization 4. <strong>Validation</strong>: Evaluate on hold-out set</p>
+<p><strong>Optimizer</strong>: SGD (Stochastic Gradient Descent) - Learning Rate: 0.001 - Momentum: 0.9 - Batch Size: 32</p>
+<p><strong>Loss Function</strong>: CrossEntropyLoss - Suitable for multi-class classification</p>
+<p><strong>Output</strong>: - <code>artifacts/training/model.pth</code>: Trained model weights</p>
+<hr />
+<h2 id="stage-4-model-evaluation">Stage 4: Model Evaluation</h2>
+<p><strong>File</strong>: <code>src/cnnClassifier/components/model_evaluation_mlflow.py</code></p>
+<p><strong>What it does:</strong> 1. Loads the trained model 2. Evaluates on validation data 3. Calculates metrics (accuracy, precision, recall, F1) 4. Logs metrics to MLflow 5. Saves scores to <code>scores.json</code></p>
+<p><strong>Why MLflow?</strong> - <strong>Experiment Tracking</strong>: Logs all hyperparameters - <strong>Model Versioning</strong>: Tracks different model versions - <strong>Reproducibility</strong>: Compare experiments easily - <strong>Model Registry</strong>: Centralized model management</p>
+<p><strong>Metrics Calculated</strong>: - <strong>Accuracy</strong>: Correct predictions / Total predictions - <strong>Precision</strong>: True Positives / (True Positives + False Positives) - <strong>Recall</strong>: True Positives / (True Positives + False Negatives) - <strong>F1 Score</strong>: 2 × (Precision × Recall) / (Precision + Recall)</p>
+<p><strong>Outputs</strong>: - <code>scores.json</code>: Model performance metrics - MLflow tracking: All experiments logged</p>
+<hr />
+<h1 id="technical-architecture">Technical Architecture</h1>
+<h2 id="system-architecture">System Architecture</h2>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│                         Client Layer                             │
+│  ┌──────────────┐  ┌──────────────┐  ┌──────────────┐          │
+│  │ Web Browser  │  │ Mobile App   │  │ API Client   │          │
+│  └──────┬───────┘  └──────┬───────┘  └──────┬───────┘          │
+└─────────┼──────────────────┼──────────────────┼─────────────────┘
+          │                  │                  │
+          ▼                  ▼                  ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                     Flask API Layer                              │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │  app.py: HTTP Server                                    │   │
+│  │  ├─ GET  /               (Web UI)                       │   │
+│  │  ├─ POST /train          (Trigger training)             │   │
+│  │  ├─ POST /predict        (Make predictions)             │   │
+│  │  └─ GET  /model-status   (Check model state)            │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘
+          │
+          ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                  Business Logic Layer                            │
+│  ┌─────────────────────────────────────────────────────────┐   │
+│  │  PredictionPipeline (prediction.py)                      │   │
+│  │  ├─ Load trained model                                   │   │
+│  │  ├─ Preprocess image                                     │   │
+│  │  ├─ Make prediction                                      │   │
+│  │  └─ Return results                                       │   │
+│  └─────────────────────────────────────────────────────────┘   │
+└─────────────────────────────────────────────────────────────────┘</code></pre>
+<h2 id="vgg16-architecture">VGG16 Architecture</h2>
+<h3 id="original-vgg16-structure">Original VGG16 Structure</h3>
+<pre><code>Input: 224×224×3 RGB Image
+│
+├─ Conv Block 1 (64 filters)
+├─ Conv Block 2 (128 filters)
+├─ Conv Block 3 (256 filters)
+├─ Conv Block 4 (512 filters)
+├─ Conv Block 5 (512 filters)
+└─ Classifier (4096 → 4096 → 1000 classes)</code></pre>
+<h3 id="modified-for-kidney-classification">Modified for Kidney Classification</h3>
+<pre><code>Features (Frozen):
+├─ Conv Block 1-5 (Same as Original)
+│  Output: 7×7×512 feature maps
+│
+└─ Custom Classifier:
+   ├─ AdaptiveAvgPool2d(7×7) → 7×7×512
+   ├─ Flatten → 25088
+   ├─ Linear(25088→4096) + ReLU + Dropout(0.5)
+   ├─ Linear(4096→4096) + ReLU + Dropout(0.5)
+   └─ Linear(4096→2)  # Normal/Tumor</code></pre>
+<h3 id="transfer-learning-strategy">Transfer Learning Strategy</h3>
+<p><strong>Why Transfer Learning?</strong></p>
+<ol type="1">
+<li><strong>Limited Data</strong>: Only ~465 images total
+<ul>
+<li>Not enough for training from scratch</li>
+<li>Would lead to severe overfitting</li>
+</ul></li>
+<li><strong>Pre-trained Features</strong>: ImageNet features are general
+<ul>
+<li>Edge detection (early layers)</li>
+<li>Pattern recognition (middle layers)</li>
+<li>High-level features (late layers)</li>
+</ul></li>
+<li><strong>Efficiency</strong>:
+<ul>
+<li>Faster training (only train classifier)</li>
+<li>Lower computational cost</li>
+<li>Better performance with less data</li>
+</ul></li>
+</ol>
+<p><strong>Freezing Strategy</strong>:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Freeze all feature extraction layers</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> param <span class="kw">in</span> model.features.parameters():</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    param.requires_grad <span class="op">=</span> <span class="va">False</span>  <span class="co"># Don&#39;t update weights</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Only train classifier</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> param <span class="kw">in</span> model.classifier.parameters():</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    param.requires_grad <span class="op">=</span> <span class="va">True</span>   <span class="co"># Update weights</span></span></code></pre></div>
+<h2 id="image-preprocessing">Image Preprocessing</h2>
+<h3 id="training-preprocessing">Training Preprocessing</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>transforms.Compose([</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Resize to match VGG16 input</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    transforms.Resize((<span class="dv">224</span>, <span class="dv">224</span>)),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Augmentation (only on training)</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    transforms.RandomRotation(<span class="dv">40</span>),</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    transforms.RandomHorizontalFlip(),</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    transforms.RandomAffine(translate<span class="op">=</span>(<span class="fl">0.2</span>, <span class="fl">0.2</span>)),</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    transforms.RandomAffine(scale<span class="op">=</span>(<span class="fl">0.8</span>, <span class="fl">1.2</span>)),</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert to tensor</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    transforms.ToTensor(),</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Normalize for ImageNet pretraining</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    transforms.Normalize(</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        mean<span class="op">=</span>[<span class="fl">0.485</span>, <span class="fl">0.456</span>, <span class="fl">0.406</span>],  <span class="co"># ImageNet mean</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        std<span class="op">=</span>[<span class="fl">0.229</span>, <span class="fl">0.224</span>, <span class="fl">0.225</span>]    <span class="co"># ImageNet std</span></span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>])</span></code></pre></div>
+<hr />
+<h1 id="mlops-practices">MLOps Practices</h1>
+<h2 id="dvc-data-version-control">DVC (Data Version Control)</h2>
+<p><strong>Purpose</strong>: Track dataset and model versions like Git tracks code</p>
+<p><strong>Benefits</strong>: - Version control for large files - Reproducible experiments - Track data lineage - Efficient storage (only stores diffs)</p>
+<p><strong>Pipeline Definition</strong> (<code>dvc.yaml</code>):</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stages</span><span class="kw">:</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">data_ingestion</span><span class="kw">:</span><span class="co">        # Stage 1</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">cmd</span><span class="kw">:</span><span class="at"> python script</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">deps</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">source files</span><span class="kw">]</span><span class="co">  # What triggers the stage</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">outs</span><span class="kw">:</span><span class="at"> </span><span class="kw">[</span><span class="at">output files</span><span class="kw">]</span><span class="co">  # Outputs to track</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">prepare_base_model</span><span class="kw">:</span><span class="co">    # Stage 2</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">depends on</span><span class="kw">:</span><span class="at"> Stage 1</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">training</span><span class="kw">:</span><span class="co">              # Stage 3</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">depends on</span><span class="kw">:</span><span class="at"> Stage 1, 2</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="at">    </span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">evaluation</span><span class="kw">:</span><span class="co">            # Stage 4</span></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">depends on</span><span class="kw">:</span><span class="at"> Stage 3</span></span></code></pre></div>
+<p><strong>Commands</strong>:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dvc</span> init              <span class="co"># Initialize DVC repo</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dvc</span> repro             <span class="co"># Run entire pipeline</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="ex">dvc</span> dag               <span class="co"># Visualize pipeline</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="ex">dvc</span> status            <span class="co"># Check pipeline status</span></span></code></pre></div>
+<h2 id="mlflow">MLflow</h2>
+<p><strong>Purpose</strong>: Machine Learning Lifecycle Management</p>
+<p><strong>Components Used</strong>: 1. <strong>Tracking</strong>: Log experiments and metrics 2. <strong>Registry</strong>: Centralized model storage</p>
+<p><strong>Features</strong>: - Track all hyperparameters - Log metrics across experiments - Compare model versions - Register best models</p>
+<p><strong>Setup</strong>:</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlflow</span> ui              <span class="co"># Start MLflow UI</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Visit http://localhost:5000</span></span></code></pre></div>
+<p><strong>Why MLflow?</strong> - Centralized experiment tracking - Compare multiple experiments - Reproducible research - Model governance</p>
+<h2 id="docker-containerization">Docker Containerization</h2>
+<p><strong>Purpose</strong>: Consistent environment across development and production</p>
+<p><strong>Dockerfile Overview</strong>:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode dockerfile"><code class="sourceCode dockerfile"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> python:3.10.18-slim-buster</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> apt-get update &amp;&amp; apt-get install awscli</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="kw">WORKDIR</span> /app</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> requirements.txt .</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="kw">RUN</span> pip install -r requirements.txt</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="kw">COPY</span> . .</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="kw">EXPOSE</span> 8080</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="kw">CMD</span> [<span class="st">&quot;python3&quot;</span>, <span class="st">&quot;app.py&quot;</span>]</span></code></pre></div>
+<p><strong>Why Docker?</strong> - Consistent environment - Isolated dependencies - Easy deployment - Scalability</p>
+<hr />
+<h1 id="setup-and-installation">Setup and Installation</h1>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Python 3.8+</li>
+<li>Conda (recommended)</li>
+<li>Git</li>
+<li>Docker (optional, for deployment)</li>
+</ul>
+<h2 id="step-by-step-installation">Step-by-Step Installation</h2>
+<h3 id="clone-repository">1. Clone Repository</h3>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone <span class="op">&lt;</span>repository-url<span class="op">&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> Kidney-Disease-Classification-Deep-Learning-Project</span></code></pre></div>
+<h3 id="create-conda-environment">2. Create Conda Environment</h3>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create environment</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> create <span class="at">-n</span> cnncls python=3.8 <span class="at">-y</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Activate environment</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ex">conda</span> activate cnncls</span></code></pre></div>
+<h3 id="install-dependencies">3. Install Dependencies</h3>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-r</span> requirements.txt</span></code></pre></div>
+<h3 id="run-training-pipeline">4. Run Training Pipeline</h3>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1: Run all stages</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> main.py</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 2: Run with DVC</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="ex">dvc</span> repro</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 3: Run individual stage</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> src/cnnClassifier/pipeline/stage_01_data_ingestion.py</span></code></pre></div>
+<h3 id="start-web-application">5. Start Web Application</h3>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> app.py</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Visit http://localhost:8080</span></span></code></pre></div>
+<hr />
+<h1 id="api-documentation">API Documentation</h1>
+<h2 id="flask-application-endpoints">Flask Application Endpoints</h2>
+<h3 id="home-endpoint">1. Home Endpoint</h3>
+<p><strong>GET /</strong> - <strong>Purpose</strong>: Display web interface for model interaction - <strong>Response</strong>: HTML page (<code>templates/index.html</code>)</p>
+<p><strong>Example</strong>:</p>
+<pre><code>GET http://localhost:8080/</code></pre>
+<h3 id="train-endpoint">2. Train Endpoint</h3>
+<p><strong>POST /train</strong> - <strong>Purpose</strong>: Trigger model training pipeline - <strong>Method</strong>: GET, POST - <strong>Response</strong>: Success message or error</p>
+<p><strong>Example Request</strong>:</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> http://localhost:8080/train</span></code></pre></div>
+<p><strong>Example Response</strong> (Success):</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;Training</span> <span class="er">done</span> <span class="er">successfully!&quot;</span></span></code></pre></div>
+<p><strong>What Happens</strong>: 1. Executes <code>main.py</code> 2. Runs all 4 pipeline stages 3. Saves trained model to <code>artifacts/training/model.pth</code> 4. Logs all outputs</p>
+<h3 id="predict-endpoint">3. Predict Endpoint</h3>
+<p><strong>POST /predict</strong> - <strong>Purpose</strong>: Classify kidney CT scan image - <strong>Request Body</strong>: JSON with base64-encoded image - <strong>Response</strong>: Prediction and confidence score</p>
+<p><strong>Request Format</strong>:</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;image&quot;</span><span class="fu">:</span> <span class="st">&quot;base64_encoded_image_string&quot;</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p><strong>Response Format</strong>:</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="ot">[</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">{</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;image&quot;</span><span class="fu">:</span> <span class="st">&quot;Tumor&quot;</span><span class="fu">,</span>        <span class="er">#</span> <span class="er">or</span> <span class="dt">&quot;Normal&quot;</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;confidence&quot;</span><span class="fu">:</span> <span class="fl">0.9456</span>     <span class="er">#</span> <span class="er">confidence</span> <span class="er">score</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="ot">]</span></span></code></pre></div>
+<p><strong>Example</strong>:</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> POST http://localhost:8080/predict <span class="dt">\</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">&quot;Content-Type: application/json&quot;</span> <span class="dt">\</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">&#39;{&quot;image&quot;: &quot;base64_string&quot;}&#39;</span></span></code></pre></div>
+<p><strong>What Happens</strong>: 1. Receives base64 image 2. Decodes and saves to <code>inputImage.jpg</code> 3. Loads trained model from <code>artifacts/training/model.pth</code> 4. Preprocesses image (resize, normalize) 5. Makes prediction 6. Returns class and confidence</p>
+<h3 id="model-status-endpoint">4. Model Status Endpoint</h3>
+<p><strong>GET /model-status</strong> - <strong>Purpose</strong>: Check if model is trained and ready - <strong>Response</strong>: Model status and path</p>
+<p><strong>Example Response</strong> (Model Ready):</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="st">&quot;ready&quot;</span><span class="fu">,</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;model_path&quot;</span><span class="fu">:</span> <span class="st">&quot;artifacts/training/model.pth&quot;</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p><strong>Example Response</strong> (Not Trained):</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;status&quot;</span><span class="fu">:</span> <span class="st">&quot;not_found&quot;</span><span class="fu">,</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;message&quot;</span><span class="fu">:</span> <span class="st">&quot;Model needs to be trained&quot;</span></span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<hr />
+<h1 id="deployment-guide">Deployment Guide</h1>
+<h2 id="docker-deployment">Docker Deployment</h2>
+<h3 id="build-docker-image">1. Build Docker Image</h3>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> kidney-classifier:latest .</span></code></pre></div>
+<h3 id="run-container">2. Run Container</h3>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-p</span> 8080:8080 kidney-classifier:latest</span></code></pre></div>
+<h3 id="access-application">3. Access Application</h3>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open browser to</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="ex">http://localhost:8080</span></span></code></pre></div>
+<h2 id="aws-deployment">AWS Deployment</h2>
+<h3 id="prerequisites-1">Prerequisites</h3>
+<ol type="1">
+<li>AWS Account</li>
+<li>IAM User with EC2 and ECR access</li>
+<li>GitHub Secrets configured</li>
+</ol>
+<h3 id="setup-steps">Setup Steps</h3>
+<h4 id="create-iam-user">1. Create IAM User</h4>
+<ul>
+<li>Create user with policies:
+<ul>
+<li><code>AmazonEC2ContainerRegistryFullAccess</code></li>
+<li><code>AmazonEC2FullAccess</code></li>
+</ul></li>
+<li>Save Access Key ID and Secret Access Key</li>
+</ul>
+<h4 id="create-ecr-repository">2. Create ECR Repository</h4>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="ex">aws</span> ecr create-repository <span class="at">--repository-name</span> kidney-classifier</span></code></pre></div>
+<ul>
+<li>Save the URI</li>
+</ul>
+<h4 id="create-ec2-instance">3. Create EC2 Instance</h4>
+<ul>
+<li>Launch Ubuntu EC2 instance</li>
+<li>Configure security group (allow port 8080)</li>
+<li>Save EC2 IP address</li>
+</ul>
+<h4 id="install-docker-on-ec2">4. Install Docker on EC2</h4>
+<div class="sourceCode" id="cb33"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get update <span class="at">-y</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-fsSL</span> https://get.docker.com <span class="at">-o</span> get-docker.sh</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> sh get-docker.sh</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker ubuntu</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="ex">newgrp</span> docker</span></code></pre></div>
+<h4 id="setup-github-secrets">5. Setup GitHub Secrets</h4>
+<p>Add to GitHub repository settings:</p>
+<pre><code>AWS_ACCESS_KEY_ID=&lt;your_access_key&gt;
+AWS_SECRET_ACCESS_KEY=&lt;your_secret_key&gt;
+AWS_REGION=us-east-1
+AWS_ECR_LOGIN_URI=&lt;ecr_uri&gt;
+ECR_REPOSITORY_NAME=kidney-classifier</code></pre>
+<hr />
+<h1 id="troubleshooting">Troubleshooting</h1>
+<h2 id="common-issues-and-solutions">Common Issues and Solutions</h2>
+<h3 id="issue-1-model-not-found">Issue 1: Model Not Found</h3>
+<p><strong>Error</strong>: <code>FileNotFoundError: artifacts/training/model.pth</code></p>
+<p><strong>Solution</strong>: 1. Train model first: <code>python main.py</code> or visit <code>/train</code> 2. Check if file exists: <code>ls artifacts/training/</code> 3. Verify training completed successfully</p>
+<h3 id="issue-2-cuda-out-of-memory">Issue 2: CUDA Out of Memory</h3>
+<p><strong>Error</strong>: <code>RuntimeError: CUDA out of memory</code></p>
+<p><strong>Solution</strong>: 1. Reduce batch size in <code>params.yaml</code> 2. Use CPU: <code>device = 'cpu'</code> 3. Reduce input image size 4. Close other applications using GPU</p>
+<h3 id="issue-3-data-download-fails">Issue 3: Data Download Fails</h3>
+<p><strong>Error</strong>: <code>Error downloading data</code></p>
+<p><strong>Solution</strong>: 1. Check internet connection 2. Verify Google Drive URL is accessible 3. Try manual download: <code>bash    gdown &lt;file_id&gt; -O artifacts/data_ingestion/data.zip</code> 4. Check Google Drive permissions</p>
+<h3 id="issue-4-dvc-pipeline-issues">Issue 4: DVC Pipeline Issues</h3>
+<p><strong>Error</strong>: <code>dvc repro fails</code></p>
+<p><strong>Solution</strong>: 1. Check DVC version: <code>dvc --version</code> 2. Verify dependencies in <code>dvc.yaml</code> 3. Run stages individually 4. Clean artifacts: <code>rm -rf artifacts/</code></p>
+<hr />
+<h1 id="quick-reference">Quick Reference</h1>
+<h2 id="common-commands">Common Commands</h2>
+<h3 id="training-commands">Training Commands</h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run entire pipeline</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> main.py</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run with DVC</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="ex">dvc</span> repro</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Run individual stage</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> src/cnnClassifier/pipeline/stage_01_data_ingestion.py</span></code></pre></div>
+<h3 id="dvc-commands">DVC Commands</h3>
+<div class="sourceCode" id="cb36"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="ex">dvc</span> init              <span class="co"># Initialize DVC</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="ex">dvc</span> repro             <span class="co"># Run pipeline</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="ex">dvc</span> dag               <span class="co"># Show pipeline graph</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="ex">dvc</span> status            <span class="co"># Check pipeline status</span></span></code></pre></div>
+<h3 id="mlflow-commands">MLflow Commands</h3>
+<div class="sourceCode" id="cb37"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="ex">mlflow</span> ui              <span class="co"># Start MLflow UI (http://localhost:5000)</span></span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="ex">mlflow</span> runs list       <span class="co"># List runs</span></span></code></pre></div>
+<h3 id="docker-commands">Docker Commands</h3>
+<div class="sourceCode" id="cb38"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Build image</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> kidney-classifier:latest .</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Run container</span></span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-p</span> 8080:8080 kidney-classifier:latest</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="co"># View logs</span></span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> logs <span class="op">&lt;</span>container_id<span class="op">&gt;</span></span></code></pre></div>
+<h2 id="api-endpoints">API Endpoints</h2>
+<h3 id="train-model">1. Train Model</h3>
+<div class="sourceCode" id="cb39"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> http://localhost:8080/train</span></code></pre></div>
+<h3 id="make-prediction">2. Make Prediction</h3>
+<div class="sourceCode" id="cb40"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-X</span> POST http://localhost:8080/predict <span class="dt">\</span></span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">-H</span> <span class="st">&quot;Content-Type: application/json&quot;</span> <span class="dt">\</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">-d</span> <span class="st">&#39;{&quot;image&quot;: &quot;base64_encoded_image&quot;}&#39;</span></span></code></pre></div>
+<h3 id="check-model-status">3. Check Model Status</h3>
+<div class="sourceCode" id="cb41"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> http://localhost:8080/model-status</span></code></pre></div>
+<hr />
+<h1 id="best-practices">Best Practices</h1>
+<h2 id="code-organization">Code Organization</h2>
+<ul>
+<li>✅ Modular design with clear separation of concerns</li>
+<li>✅ Configuration centralized in YAML files</li>
+<li>✅ Consistent error handling and logging</li>
+<li>✅ Type hints for better code readability</li>
+</ul>
+<h2 id="data-management">Data Management</h2>
+<ul>
+<li>✅ Version control with DVC</li>
+<li>✅ Keep raw data separate from processed data</li>
+<li>✅ Document data sources and transformations</li>
+<li>✅ Use reproducible seeds for train/test splits</li>
+</ul>
+<h2 id="model-development">Model Development</h2>
+<ul>
+<li>✅ Use transfer learning for small datasets</li>
+<li>✅ Implement data augmentation</li>
+<li>✅ Track experiments with MLflow</li>
+<li>✅ Validate on hold-out set</li>
+<li>✅ Save model checkpoints</li>
+</ul>
+<h2 id="deployment">Deployment</h2>
+<ul>
+<li>✅ Containerize with Docker</li>
+<li>✅ Use CI/CD pipelines</li>
+<li>✅ Implement health checks</li>
+<li>✅ Monitor model performance</li>
+<li>✅ Version model artifacts</li>
+</ul>
+<h2 id="security">Security</h2>
+<ul>
+<li>✅ Don’t commit credentials</li>
+<li>✅ Use environment variables for secrets</li>
+<li>✅ Validate input data</li>
+<li>✅ Implement rate limiting</li>
+<li>✅ Use HTTPS in production</li>
+</ul>
+<hr />
+<h2 id="performance-metrics">Performance Metrics</h2>
+<h3 id="model-performance">Model Performance</h3>
+<ul>
+<li><strong>Expected Accuracy</strong>: 85-95% (depending on data quality)</li>
+<li><strong>Training Time</strong>: ~10-30 minutes per epoch (GPU)</li>
+<li><strong>Inference Time</strong>: &lt;1 second per image</li>
+</ul>
+<h3 id="system-requirements">System Requirements</h3>
+<ul>
+<li><strong>CPU</strong>: 4+ cores recommended</li>
+<li><strong>RAM</strong>: 8GB+ recommended</li>
+<li><strong>GPU</strong>: Optional (CUDA or MPS)</li>
+<li><strong>Disk</strong>: 5GB for data + models</li>
+<li><strong>Network</strong>: For downloading data</li>
+</ul>
+<hr />
+<h2 id="references">References</h2>
+<h3 id="documentation">Documentation</h3>
+<ul>
+<li><a href="https://pytorch.org/docs/">PyTorch Documentation</a></li>
+<li><a href="https://mlflow.org/docs/latest/index.html">MLflow Documentation</a></li>
+<li><a href="https://dvc.org/doc">DVC Documentation</a></li>
+<li><a href="https://flask.palletsprojects.com/">Flask Documentation</a></li>
+<li><a href="https://arxiv.org/abs/1409.1556">VGG16 Paper</a></li>
+</ul>
+<h3 id="resources">Resources</h3>
+<ul>
+<li>Original Dataset: <a href="https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view">Google Drive</a></li>
+<li>MLflow Tutorials: <a href="https://mlflow.org/docs/latest/tutorials.html">Official Tutorials</a></li>
+<li>Docker Guides: <a href="https://docs.docker.com/">Docker Documentation</a></li>
+</ul>
+<hr />
+<h2 id="conclusion">Conclusion</h2>
+<p>This project demonstrates a complete MLOps pipeline for medical image classification using: - <strong>Deep Learning</strong> (PyTorch + Transfer Learning) - <strong>MLOps Tools</strong> (DVC + MLflow) - <strong>Web Deployment</strong> (Flask + Docker) - <strong>Cloud Infrastructure</strong> (AWS)</p>
+<p>Follow this documentation to understand, set up, and deploy the kidney disease classification system.</p>
+<hr />
+<p><strong>Last Updated</strong>: 2024 <strong>Version</strong>: 1.0 <strong>Maintainer</strong>: Project Team <strong>License</strong>: Check LICENSE file</p>
+</body>
+</html>
