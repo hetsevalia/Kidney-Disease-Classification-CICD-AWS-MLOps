@@ -99,13 +99,6 @@
             transform: none;
         }
 
-        .btn-train {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        }
-
-        .btn-train:hover {
-            box-shadow: 0 10px 20px rgba(245, 87, 108, 0.4);
-        }
 
         .result {
             margin-top: 30px;
@@ -182,10 +175,6 @@
             🔍 Classify Image
         </button>
 
-        <button class="btn btn-train" id="trainBtn" onclick="trainModel()">
-            🚀 Train Model
-        </button>
-
         <div class="loader" id="loader"></div>
 
         <div class="result" id="result"></div>
@@ -203,7 +192,6 @@
         const fileInput = document.getElementById('fileInput');
         const imagePreview = document.getElementById('imagePreview');
         const predictBtn = document.getElementById('predictBtn');
-        const trainBtn = document.getElementById('trainBtn');
         const loader = document.getElementById('loader');
         const result = document.getElementById('result');
 
@@ -326,31 +314,6 @@
             }
         }
 
-        async function trainModel() {
-            if (!confirm('Are you sure you want to start training? This may take a while.')) {
-                return;
-            }
-
-            trainBtn.disabled = true;
-            trainBtn.textContent = '⏳ Training in progress...';
-            loader.style.display = 'block';
-
-            try {
-                const response = await fetch('http://localhost:8080/train', {
-                    method: 'POST'
-                });
-
-                const data = await response.text();
-                alert('✅ ' + data);
-            } catch (error) {
-                console.error('Error:', error);
-                alert('❌ Error during training. Check the console for details.');
-            } finally {
-                loader.style.display = 'none';
-                trainBtn.disabled = false;
-                trainBtn.textContent = '🚀 Train Model';
-            }
-        }
     </script>
 </body>
 </html>

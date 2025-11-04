@@ -55,8 +55,9 @@ artifacts/data_ingestion/data.zip
 .dvcignore
 dvc.lock
 
-# Model files (large files)
+# Model files (large files) - but allow model folder
 *.pth
+!model/*.pth
 *.h5
 *.hdf5
 *.pkl

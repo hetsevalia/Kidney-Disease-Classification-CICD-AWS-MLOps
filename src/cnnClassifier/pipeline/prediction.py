@@ -43,15 +43,24 @@ class PredictionPipeline:
             
             model = nn.Sequential(features, classifier)
             
-            # FIXED PATH - Changed from "model/model.pth" to "artifacts/training/model.pth"
-            model_path = os.path.join("artifacts", "training", "model.pth")
+            # Check multiple possible model locations
+            possible_paths = [
+                os.path.join("model", "best_model.pth"),  # Model folder location
+                os.path.join("artifacts", "training", "model.pth"),  # Training artifacts location
+                os.path.join("model", "model.pth"),  # Alternative model location
+            ]
             
-            # Check if model exists
-            if not os.path.exists(model_path):
+            model_path = None
+            for path in possible_paths:
+                if os.path.exists(path):
+                    model_path = path
+                    break
+            
+            # If no model found, raise error
+            if model_path is None:
                 raise FileNotFoundError(
-                    f"Model file not found at {model_path}. "
-                    "Please train the model first by running 'python main.py' "
-                    "or clicking the 'Train Model' button."
+                    f"Model file not found. Searched in: {', '.join(possible_paths)}. "
+                    "Please ensure the model file is present in the Docker image."
                 )
             
             logger.info(f"Loading model from {model_path}")
@@ -99,7 +108,7 @@ class PredictionPipeline:
                     raise RuntimeError(
                         f"Failed to load model from {model_path}. "
                         f"Error: {str(load_error)}. "
-                        f"The model file may be corrupted. Please retrain the model using 'python main.py'."
+                        f"The model file may be corrupted. Please check the model file."
                     )
 
             # Load and preprocess image
