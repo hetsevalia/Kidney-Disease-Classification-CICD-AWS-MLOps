@@ -93,6 +93,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Install AWS CLI
+        run: |
+          if ! command -v aws &> /dev/null; then
+            echo "Installing AWS CLI..."
+            sudo apt-get update -y
+            sudo apt-get install -y unzip curl
+            curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+            unzip -o awscliv2.zip
+            sudo ./aws/install || true
+          else
+            echo "AWS CLI already installed"
+          fi
+          aws --version
+
       - name: Set AWS Region
         id: set-region
         run: |
@@ -101,6 +115,7 @@ jobs:
           else
             echo "region=${{ secrets.AWS_REGION }}" >> $GITHUB_OUTPUT
           fi
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -133,15 +148,16 @@ jobs:
       
       - name: Pull latest images
         run: |
-         docker pull ${{ steps.set-ecr-image.outputs.image }}
-         
-      # - name: Stop and remove container if running
-      #   run: |
-      #    docker ps -q --filter "name=cnncls" | grep -q . && docker stop cnncls && docker rm -fv cnncls
+          docker pull ${{ steps.set-ecr-image.outputs.image }}
        
       - name: Run Docker Image to serve users
         run: |
-         docker run -d -p 8080:8080 --name=cnncls -e 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}' -e 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -e 'AWS_REGION=${{ steps.set-region.outputs.region }}'  ${{ steps.set-ecr-image.outputs.image }}
+          docker run -d -p 8080:8080 --name=cnncls \
+            -e 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}' \
+            -e 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}' \
+            -e 'AWS_REGION=${{ steps.set-region.outputs.region }}' \
+            ${{ steps.set-ecr-image.outputs.image }}
+
       - name: Clean previous images and containers
         run: |
-         docker system prune -f
+          docker system prune -f
