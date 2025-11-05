@@ -149,7 +149,17 @@ jobs:
       - name: Pull latest images
         run: |
           docker pull ${{ steps.set-ecr-image.outputs.image }}
-       
+      
+      - name: Stop and remove existing container if running
+        run: |
+          if [ "$(docker ps -aq -f name=cnncls)" ]; then
+            echo "Stopping and removing existing container..."
+            docker stop cnncls || true
+            docker rm -fv cnncls || true
+          else
+            echo "No existing cnncls container found"
+          fi
+          
       - name: Run Docker Image to serve users
         run: |
           docker run -d -p 8080:8080 --name=cnncls \
