@@ -112,10 +112,28 @@ jobs:
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
       
+      - name: Set ECR Image
+        id: set-ecr-image
+        run: |
+          ECR_REGISTRY="${{ steps.login-ecr.outputs.registry }}"
+          ECR_REPOSITORY="${{ secrets.ECR_REPOSITORY_NAME }}"
+          IMAGE_TAG="latest"
+          FULL_IMAGE="$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
+          echo "image=$FULL_IMAGE" >> $GITHUB_OUTPUT
+          echo "ECR Registry: $ECR_REGISTRY"
+          echo "ECR Repository: $ECR_REPOSITORY"
+          echo "Full image path: $FULL_IMAGE"
+          
+          # Verify repository exists
+          aws ecr describe-repositories --repository-names "$ECR_REPOSITORY" --region "${{ steps.set-region.outputs.region }}" || {
+            echo "ERROR: Repository $ECR_REPOSITORY does not exist in ECR"
+            echo "Please create it first or check the ECR_REPOSITORY_NAME secret"
+            exit 1
+          }
       
       - name: Pull latest images
         run: |
-         docker pull ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+         docker pull ${{ steps.set-ecr-image.outputs.image }}
          
       # - name: Stop and remove container if running
       #   run: |
@@ -123,7 +141,7 @@ jobs:
        
       - name: Run Docker Image to serve users
         run: |
-         docker run -d -p 8080:8080 --name=cnncls -e 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}' -e 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -e 'AWS_REGION=${{ secrets.AWS_REGION }}'  ${{secrets.AWS_ECR_LOGIN_URI}}/${{ secrets.ECR_REPOSITORY_NAME }}:latest
+         docker run -d -p 8080:8080 --name=cnncls -e 'AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}' -e 'AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}' -e 'AWS_REGION=${{ steps.set-region.outputs.region }}'  ${{ steps.set-ecr-image.outputs.image }}
       - name: Clean previous images and containers
         run: |
          docker system prune -f
